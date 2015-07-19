@@ -10,4 +10,4 @@ env.roledefs = { 'test': ['192.168.101.146'], }
 
 @roles('test')
 def deploy():
-  rsync_project(remote_dir='/opt/theodo-lights/', local_dir='./')
+  rsync_project(remote_dir='/opt/home-controller/', local_dir='./')

@@ -3,16 +3,16 @@
 #
 case "$1" in
 start)
-echo "Starting Theodo Lights."
-nohup /opt/theodo-lights/theodo-lights.py &
+echo "Starting Home Controller."
+nohup /opt/home-controller/home-controller.py &
 ;;
 status)
 # Check to see if the process is running
-ps aux|grep -i theodo-lights
+ps aux|grep -i home-controller
 ;;
 
 *)
-echo “Theodo Lights Web Portal Service”
+echo “Home Controller Web Portal Service”
 echo $”Usage: $0 {start|status}”
 exit 1
 esac
