@@ -1,19 +1,26 @@
 #!/bin/bash
-# USAGE: start|status
+# USAGE: start|status|stop
 #
+
+do_start () {
+	echo "Starting Home Controller."
+	nohup python /opt/home-controller/home-controller.py &
+}
+
 case "$1" in
 start)
-echo "Starting Home Controller."
-nohup /opt/home-controller/home-controller.py &
+	do_start
 ;;
 status)
-# Check to see if the process is running
-ps aux|grep -i home-controller
+	# Check to see if the process is running
+	ps aux|grep -i home-controller
 ;;
-
+stop)
+	pkill -f home-controller.py
+;;
 *)
-echo “Home Controller Web Portal Service”
-echo $”Usage: $0 {start|status}”
-exit 1
+	echo “Home Controller Web Portal Service”
+	echo $”Usage: $0 {start|status|stop}”
+	exit 1
 esac
 exit 0
